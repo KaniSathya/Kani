@@ -1,0 +1,16 @@
+function [points] = myCircle(r,n)
+    angleIncr = 2*pi/n;
+    theta = 0;
+    points = [r,0];
+    for i = 1 : n
+        theta = theta + angleIncr;
+        x = r*cos(theta);
+        y = r*sin(theta);
+        points = [points; x, y];
+    end
+end
+
+
+%commands for command window 
+%pts=myCircle(1,360)
+%plot (pts(:,1), pts(:,2))

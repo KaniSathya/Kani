@@ -1,0 +1,29 @@
+p1norm = []
+p2norm = []
+pInfnorm = []
+%Taking the increment values at the interaval of 0.01.
+incr= 0.01
+% taking c, between -1 and 1 because the range of yn is between the same
+% range
+for c = -1:incr:1
+    p1norm = [p1norm; myNorm(yn-ones(1,1001)*c,1)]
+    p2norm = [p2norm; myNorm(yn-ones(1,1001)*c,2)]
+    pInfnorm = [pInfnorm; myNorm(yn-ones(1,1001)*c, Inf)]
+end
+hold on a
+cp1 = plot(-1:incr:1,p1norm)
+set(cp1,'color','red')
+cp2 = plot(-1:incr:1,p2norm)
+set(cp2,'color','blue')
+cp3 = plot(-1:incr:1,pInfnorm)
+set(cp3,'color','green')
+hold off
+
+%commands for commmand window:
+%find(p1norm==min(p1norm)
+%-1+0.01*ans
+%find(p2norm==min(p2norm)
+%-1+0.01*ans
+%find(pInfnorm==min(pInfnorm)
+%-1+0.01*ans
+

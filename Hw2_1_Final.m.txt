@@ -1,0 +1,44 @@
+% number of points on a circle
+n = 361
+% the list of points on a circle 
+PointsOnTheCircle = myCircle(1,n);
+length(PointsOnTheCircle)
+size(PointsOnTheCircle)
+% list of p values for norms
+% pValues = [0.5 1 2 5 10 Inf]
+% list of p norms for the points on the circle
+pNormHalf = []
+pNorm1 = []
+pNorm2 = []
+pNorm5 = []
+pNorm10 = []
+pNormInf = []
+for k = 1 : length(PointsOnTheCircle)
+    pNormHalf = [pNormHalf myNorm(PointsOnTheCircle(k,:),0.5)];
+    pNorm1 = [pNorm1 myNorm(PointsOnTheCircle(k,:),1)];
+    pNorm2 = [pNorm2 myNorm(PointsOnTheCircle(k,:),2)];
+    pNorm5 = [pNorm5 myNorm(PointsOnTheCircle(k,:),5)];
+    pNorm10 = [pNorm10 myNorm(PointsOnTheCircle(k,:),10)];
+    pNormInf = [pNormInf myNorm(PointsOnTheCircle(k,:),Inf)];
+end 
+pNormHalf;   
+pNorm1;
+pNorm2;
+pNorm5;
+pNorm10;
+pNormInf;
+hold on 
+plotHalf = plot (pNormHalf) 
+title ( 'Norms for different p values ' )
+set(plotHalf,'Color','yellow')
+plot1 = plot (pNorm1)  
+set(plot1,'Color','black','LineStyle','--','LineWidth',2)
+plot2 = plot (pNorm2) 
+set(plot2,'Color','blue')
+plot5 = plot (pNorm5) 
+set(plot5,'Color','black')
+plot10 = plot (pNorm10)
+set(plot10,'Color','green')
+plotInf = plot (pNormInf) 
+set(plotInf,'Color','red','LineStyle','--','LineWidth',2)
+hold off
